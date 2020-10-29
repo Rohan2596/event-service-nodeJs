@@ -2,24 +2,10 @@ const express = require('express');
 const app = express();
 
 
+const eventsRoutes=require('./events.routes');
 
-//Making Get Request  to fetch all events
-app.get('/events', async (request, response) => {
-    response.send("Getting All Events Registered.")
-});
-
-//Making Post Request to add events to database
-app.post('/event/add', async (request, response) => {
-    response.send("Adding Events to Database.")
-});
-
-
-//making Put request to update events to database
-app.put('/events/update', async (request, response) => {
-    response.send("Updating Events on to Database.")
-});
-
-
+//Creating Routes for events 
+app.use('/events',eventsRoutes);
 
 
 //And finally listening to that particular server.

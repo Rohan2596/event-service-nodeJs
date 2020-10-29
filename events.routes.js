@@ -1,22 +1,17 @@
 const express = require('express');
 const router = express.Router();
 
+const eventController = require('./events.controller')
 
 
 //Making Get Request  to fetch all events
-router.get('/all', async (request, response) => {
-    response.send("Getting All Events Registered.")
-});
+router.get('/all', eventController.getAllEvents);
 
 //Making Post Request to add events to database
-router.post('/add', async (request, response) => {
-    response.send("Adding Events to Database.")
-});
+router.post('/add', eventController.addingEvent);
 
 
 //making Put request to update events to database
-router.put('/update', async (request, response) => {
-    response.send("Updating Events on to Database.")
-});
+router.put('/update', eventController.updateEvent);
 
-module.exports=router;
+module.exports = router;

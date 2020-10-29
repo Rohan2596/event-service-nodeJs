@@ -2,10 +2,10 @@ const express = require('express');
 const app = express();
 
 
-const eventsRoutes=require('./events.routes');
+const eventsRoutes = require('./events.routes');
 
 //Creating Routes for events 
-app.use('/events',eventsRoutes);
+app.use('/events', eventsRoutes);
 
 
 //And finally listening to that particular server.

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const eventController = require('./events.controller')
+const eventController = require('../controller/events.controller')
 
 
 //Making Get Request  to fetch all events

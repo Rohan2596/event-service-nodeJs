@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 
 
-const eventsRoutes = require('./events.routes');
+const eventsRoutes = require('./com.saptalabz.events/router/events.routes');
 
 //Creating Routes for events 
 app.use('/events', eventsRoutes);

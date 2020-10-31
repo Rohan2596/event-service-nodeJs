@@ -5,6 +5,8 @@ const bodyparser=require('body-parser');
 
 
 app.use(bodyparser.json());
+const expressValidator= require('express-validator');
+app.use(expressValidator());
 
 const eventsRoutes = require('./com.saptalabz.events/router/events.routes');
 

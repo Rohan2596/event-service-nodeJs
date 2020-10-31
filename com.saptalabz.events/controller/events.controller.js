@@ -1,4 +1,3 @@
-var EventDto = require('../dto/event.dto')
 module.exports = {
 
     getAllEvents: async (request, response) => {
@@ -9,16 +8,15 @@ module.exports = {
     },
     addingEvent: async (request, response) => {
         try {
-            var eventDto =new EventDto({
-                title: request.body.title,
-                description: request.body.description,
-                type: request.body.type,
-                location: request.body.location,
-                date: request.body.date
-            });
-        await  console.log(request.body.title);
+           request.checkBody('title','Title Cannot be empty').notEmpty();
            
+           var error=request.validationErrors();
+           if(error){
+            response.status(422).send("Adding Events to database." )
+           }else{
             response.status(200).send("Adding Events to database." )
+           }
+            
         } catch (error){
             console.log(error);
             

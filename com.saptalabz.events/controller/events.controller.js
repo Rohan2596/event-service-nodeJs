@@ -9,7 +9,15 @@ module.exports = {
     getAllEvents: async (request, response) => {
 
         try {
-            response.status(200).send("Adding Events to database.")
+            userService.getAllEventsService(response.body).then((data) => {
+                console.log(data.toString());
+                
+                response.status(200).send("Adding Events to database.");
+
+            }).catch((err) => {
+                console.log(err);
+            })
+
         } catch (error) {
             response.status(404).send("Failed to Add Events to database.")
         }
@@ -58,7 +66,14 @@ module.exports = {
             if (validationErrors) {
                 response.status(500).send("Validation Errors..")
             } else {
-                response.status(200).send("Updating  Events to database.")
+                userService.eventUpdateService(response.body).then((data) => {
+                    console.log(data.toString());
+                    
+                    response.status(200).send("Adding Events to database.");
+
+                }).catch((err) => {
+                    console.log(err);
+                })
 
             }
 

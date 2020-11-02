@@ -6,7 +6,8 @@ const eventSchema = new moongoose.Schema({
     },
     'description': {
         type: String,
-        required: true
+        required: true                               
+        
     },
     'type': {
         type: String,
@@ -28,7 +29,7 @@ const eventSchema = new moongoose.Schema({
     timestamps: true
 }
 )
-const event=moongoose.model('event',eventSchema)
+const eventModel=moongoose.model('event',eventSchema)
 module.exports={
      eventObject:async (result)=>{
         return{
@@ -42,23 +43,29 @@ module.exports={
     },
     addEvent:async(request)=>{
         try {
+            console.log(request);
+            
             return new Promise((resolve,reject)=>{
-                event.findOne({'title':request.title})
+                eventModel.findOne({'title':request.title})
                 .then(
                     result=>{
                         if(result){
                             reject({message:'Event Already Exist'})
                         }else{
-                            let event=new event(request);
+                            console.log(result);
+                            
+                            var event=new eventModel({
+                                title:request.title,
+                                description:request.description,
+                                type:request.type,
+                                location:request.location,
+                                date:request.date 
+                             
+                            });
                             event.save().then(
                                 result=>{
-                                  let data={
-                                    "title":result.title,
-                                    "description":result.description,
-                                    "type":result.type,
-                                    "location":result.location,
-                                    "date":result.date 
-                                  }
+                                  resolve({message:'Regisration successfull!',data:data})
+
                                 }
                             ).catch(err=>{
                                 reject({message:'Event Addition Failed!',error:err})

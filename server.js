@@ -3,7 +3,7 @@ const app = express();
 
 const bodyparser=require('body-parser');
 
-
+require('./com.saptalabz.events/configuration/database.connection')
 app.use(bodyparser.json());
 const expressValidator= require('express-validator');
 app.use(expressValidator());

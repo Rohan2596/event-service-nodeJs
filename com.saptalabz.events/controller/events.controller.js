@@ -9,12 +9,14 @@ module.exports = {
     getAllEvents: async (request, response) => {
 
         try {
-            userService.getAllEventsService(response.body).then((data) => {
-                console.log(data.toString());
-                
-                response.status(200).send("Adding Events to database.");
-
-            }).catch((err) => {
+            var event = {
+                "title": response.body.title,
+                "description": response.body.description,
+                "type": response.body.type,
+                "location": response.body.location,
+                "date": response.body.date
+            }
+            userService.getAllEventsService(event).then((data) => {
                 console.log(err);
             })
 
@@ -36,7 +38,14 @@ module.exports = {
             if (validationErrors) {
                 response.status(500).send("Validation Errors..")
             } else {
-                userService.eventAddService(response.body).then((data) => {
+                var event = {
+                    "title": request.body.title,
+                    "description": request.body.description,
+                    "type": request.body.type,
+                    "location": request.body.location,
+                    "date": request.body.date
+                }
+                userService.eventAddService(event).then((data) => {
                     console.log(data.toString());
                     
                     response.status(200).send("Adding Events to database.");

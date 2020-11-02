@@ -1,6 +1,6 @@
 const mongoose=require('mongoose');
 mongoose.Promise=global.Promise;
-mongoose.connect("",{useUnifiedTopology:true,useNewUrlParser:true})
+mongoose.connect("http://localhost:27017/myDb",{useUnifiedTopology:true,useNewUrlParser:true})
 .then(()=>{
     console.log("SuccessFully connected to the database");
     

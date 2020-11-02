@@ -1,34 +1,37 @@
+
+const eventModel = require('../model/event.model');
+const { error } = require('console');
 module.exports = {
 
-    async eventAddService(request) {
+    eventAddService: async (event) => {
         try {
-            let event = {
-                "title": request.title,
-                "description": request.description,
-                "type": request.type,
-                "location": request.location,
-                "date": request.date
-            }
-            console.log(event);
+         
+            console.log("Events in Servce: ",event);
             console.log("Event added...");
+            return eventModel.addEvent(event).then((data)=>{
+                return data;
+            }).catch((error)=>{
+                return error;
+            })
 
-            return event;
         } catch (error) {
-            return "event Add Service";
+            console.log("***********",error);
+            
+            return error;
         }
     },
     async eventUpdateService(request) {
         try {
             let event = {
-                "title": request.title,
-                "description": request.description,
-                "type": request.type,
-                "location": request.location,
-                "date": request.date
+                'title': request.title,
+                'description': request.description,
+                'type': request.type,
+                'location': request.location,
+                'date': request.date
             }
             console.log(event);
             console.log("Event added...");
-            
+
             return event;
         } catch (error) {
             return "event Add Service";

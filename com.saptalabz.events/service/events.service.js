@@ -38,17 +38,13 @@ module.exports = {
         }
     },
 
-    async getAllEventsService(request) {
+    async getAllEventsService() {
         try {
-            let event = {
-                "title": request.title,
-                "description": request.description,
-                "type": request.type,
-                "location": request.location,
-                "date": request.date
-            }
-            console.log(event);
-            return event;
+            return eventModel.getAllEvents().then((data)=>{
+                return data;
+            }).catch((error)=>{
+                return error;
+            })
         } catch (error) {
             return "event Add Service";
         }

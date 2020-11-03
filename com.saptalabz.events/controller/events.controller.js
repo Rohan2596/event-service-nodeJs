@@ -9,15 +9,9 @@ module.exports = {
     getAllEvents: async (request, response) => {
 
         try {
-            var event = {
-                "title": response.body.title,
-                "description": response.body.description,
-                "type": response.body.type,
-                "location": response.body.location,
-                "date": response.body.date
-            }
-            userService.getAllEventsService(event).then((data) => {
-                console.log(err);
+
+            userService.getAllEventsService().then((data) => {
+                response.status(200).send(data);
             })
 
         } catch (error) {
@@ -47,7 +41,7 @@ module.exports = {
                 }
                 userService.eventAddService(event).then((data) => {
                     console.log(data.toString());
-                    
+
                     response.status(200).send("Adding Events to database.");
 
                 }).catch((err) => {
@@ -77,7 +71,7 @@ module.exports = {
             } else {
                 userService.eventUpdateService(response.body).then((data) => {
                     console.log(data.toString());
-                    
+
                     response.status(200).send("Adding Events to database.");
 
                 }).catch((err) => {

@@ -20,19 +20,15 @@ module.exports = {
             return error;
         }
     },
-    async eventUpdateService(request) {
+    async eventUpdateService(event) {
         try {
-            let event = {
-                'title': request.title,
-                'description': request.description,
-                'type': request.type,
-                'location': request.location,
-                'date': request.date
-            }
-            console.log(event);
-            console.log("Event added...");
-
-            return event;
+            console.log("Events in Servce: ",event);
+            console.log("Event Update...");
+            return eventModel.updateEvent(event).then((data)=>{
+                return data;
+            }).catch((error)=>{
+                return error;
+            })
         } catch (error) {
             return "event Add Service";
         }

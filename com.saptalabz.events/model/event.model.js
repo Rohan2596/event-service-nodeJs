@@ -106,6 +106,30 @@ module.exports = {
             console.log(error);
 
         }
+    },
+    updateEvent:async(request)=>{
+        try {
+            return new Promise((resolve,reject)=>{
+                eventModel.findOneAndUpdate({'title':request.title},request.update,{new:true})
+                .then(
+                    result=>{
+                        if(result){
+                            console.log(result);
+                            resolve({ message: " Updated!", data: result });
+                           
+                        }else{
+                           reject({message:'Event Not Found'})
+                        }
+                    }
+                ).catch(err=>{
+                    reject({message:err})
+                })
+
+            })
+        } catch (error) {
+            reject(error)
+        }
+
     }
 
 }

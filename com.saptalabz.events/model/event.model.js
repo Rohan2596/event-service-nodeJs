@@ -110,7 +110,16 @@ module.exports = {
     updateEvent:async(request)=>{
         try {
             return new Promise((resolve,reject)=>{
-                eventModel.findOneAndUpdate({'title':request.title},request.update,{new:true})
+                eventModel.findOneAndUpdate({'title':request.title},{
+                    $set:{
+                        'title':request.title,
+                        'description':request.description,
+                        'type':request.type,
+                        'location':request.location,
+                        'date':request.date
+
+                    }
+                })
                 .then(
                     result=>{
                         if(result){

@@ -51,7 +51,7 @@ module.exports = {
                     .then(
                         result => {
                             if (result) {
-                                reject({ message: 'Event Already Exist' })
+                                reject({ message: 'Event Already Exist in our system.' })
                             } else {
                                 console.log(result);
 
@@ -65,11 +65,11 @@ module.exports = {
                                 });
                                 event.save().then(
                                     result => {
-                                        resolve({ message: 'Regisration successfull!', data: data })
+                                        resolve({ message: 'Events Added successfully in our system.', data: data })
 
                                     }
                                 ).catch(err => {
-                                    reject({ message: 'Event Addition Failed!', error: err })
+                                    reject({ message: 'Event Addition Failed in our system.', error: err })
                                 });
                             }
                         }

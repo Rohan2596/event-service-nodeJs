@@ -14,4 +14,6 @@ router.post('/add', eventController.addingEvent);
 //making Put request to update events to database
 router.put('/update', eventController.updateEvent);
 
+//making delete request to delete events from database
+router.delete('/remove',eventController.deleteEvent);
 module.exports = router;

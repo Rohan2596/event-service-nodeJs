@@ -28,10 +28,6 @@ const expressValidator= require('express-validator');
 app.use(expressValidator());
 
 const eventsRoutes = require('./com.saptalabz.events/router/events.routes');
-/** 
- * @swagger
- * */ 
-//Creating Routes for events 
 app.use('/events', eventsRoutes);
 app.use(bodyparser.urlencoded({ extended: false }));
 //And finally listening to that particular server.

@@ -88,9 +88,10 @@ module.exports = {
     },
     deleteEvent:async(request,response)=>{
         try {
+            response.status(200).send("event delete successfully")
             
         } catch (error) {
-            
+            response.status(404).send("Event Failed to delete.")
         }
     }
 

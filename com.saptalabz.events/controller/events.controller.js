@@ -66,7 +66,7 @@ module.exports = {
 
 
             let validationErrors = request.validationErrors();
-           if (validationErrors) {
+            if (validationErrors) {
                 response.status(500).send("Validation Errors..")
             } else {
                 userService.eventUpdateService(request.body).then((data) => {
@@ -86,10 +86,24 @@ module.exports = {
             response.status(404).send("Failed to update Events to database.")
         }
     },
-    deleteEvent:async(request,response)=>{
+    deleteEvent: async (request, response) => {
         try {
+
+            const id = request.param('title');
+            if (id != null) {
+
+                response.status(404).send("Id is null.")
+            } else {
+                userService.deleteEventService(id).then(()=>{
+                    response.status(200).send("DELETED successfully.");
+
+                }).catch((err)=>{
+                    response.status(404).send("Failed to update Events to database.")   
+                })
+            }
+
             response.status(200).send("event delete successfully")
-            
+
         } catch (error) {
             response.status(404).send("Event Failed to delete.")
         }

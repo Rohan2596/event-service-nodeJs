@@ -142,7 +142,20 @@ module.exports = {
 
     },
     deleteEvent:async(request)=>{
-        
+        try {
+            return new Promise((resolve,reject)=>{
+                eventModel.findOneAndDelete({'title':request.title}).then(data=>{
+                   
+                        resolve({message:"events destroyed."})
+                    
+                }).catch(err=>{
+                    reject({message:err})
+                })
+            })
+        } catch (error) {
+            console.log(error);
+            
+        }
     }
      
 }

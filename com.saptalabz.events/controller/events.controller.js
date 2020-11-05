@@ -85,6 +85,13 @@ module.exports = {
 
             response.status(404).send("Failed to update Events to database.")
         }
+    },
+    deleteEvent:async(request,response)=>{
+        try {
+            
+        } catch (error) {
+            
+        }
     }
 
 

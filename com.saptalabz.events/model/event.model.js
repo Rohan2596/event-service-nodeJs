@@ -1,5 +1,6 @@
 const moongoose = require('mongoose');
 const { rejects } = require('assert');
+const { request } = require('express');
 const eventSchema = new moongoose.Schema({
     'title': {
         type: String,
@@ -139,6 +140,9 @@ module.exports = {
             reject(error)
         }
 
+    },
+    deleteEvent:async(request)=>{
+        
     }
-
+     
 }

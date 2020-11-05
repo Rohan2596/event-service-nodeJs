@@ -5,28 +5,28 @@ module.exports = {
 
     eventAddService: async (event) => {
         try {
-         
-            console.log("Events in Servce: ",event);
+
+            console.log("Events in Servce: ", event);
             console.log("Event added...");
-            return eventModel.addEvent(event).then((data)=>{
+            return eventModel.addEvent(event).then((data) => {
                 return data;
-            }).catch((error)=>{
+            }).catch((error) => {
                 return error;
             })
 
         } catch (error) {
-            console.log("***********",error);
-            
+            console.log("***********", error);
+
             return error;
         }
     },
     async eventUpdateService(event) {
         try {
-            console.log("Events in Servce: ",event);
+            console.log("Events in Servce: ", event);
             console.log("Event Update...");
-            return eventModel.updateEvent(event).then((data)=>{
+            return eventModel.updateEvent(event).then((data) => {
                 return data;
-            }).catch((error)=>{
+            }).catch((error) => {
                 return error;
             })
         } catch (error) {
@@ -36,13 +36,24 @@ module.exports = {
 
     async getAllEventsService() {
         try {
-            return eventModel.getAllEvents().then((data)=>{
+            return eventModel.getAllEvents().then((data) => {
                 return data;
-            }).catch((error)=>{
+            }).catch((error) => {
                 return error;
             })
         } catch (error) {
             return "event Add Service";
+        }
+    },
+    async deleteEventService() {
+        try {
+            return eventModel.deleteEvent().then((data) => {
+                return data;
+            }).catch((error) => {
+               return error;
+            })
+        } catch (error) {
+               return "delete service";
         }
     }
 
